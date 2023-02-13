@@ -9,7 +9,7 @@
 		
 		<b>Explain how your algorithm is no worse than one that checks each sample within the bounding box of the triangle. </b>
 		
-		<p> My algorithm is based off of the point in triangle test from the lecture 2 slides. The boundary box is created by taking the points and finding the min and max </p>
+		<p> My algorithm is based off of the point in triangle test from the lecture 2 slides. The boundary box is created by taking the points and finding the min and max coodinartes for the 2 for loops (x & y). This helps avoid checking every pixel on the screen, which would make it slower. Then after all of the checks are done, I call fill_pixel() if the pixel passed the test.</p>
 		
 		
 		<b>Show a png screenshot of basic/test4.svg with the default viewing parameters and with the pixel inspector centered on an interesting part of the scene.</b>
