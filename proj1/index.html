@@ -4,8 +4,9 @@
 	<body>
 		<h2> Task 1 </h2>
 		<b>Walk through how you rasterize triangles in your own words.</b>
-		<p> Simply put, rasterizing a triangle is the process of finding the lines and points that make up the triangle and then testing whether each pixel is inside the triangle or not. If it is, then we render it and if it is not then we leave it alone.</p>
 		
+		<p> Simply put, rasterizing a triangle is the process of finding the lines and points that make up the triangle and then testing whether each pixel is inside the triangle or not. If it is, then we render it and if it is not then we leave it alone.</p>
+	
 		<b>Explain how your algorithm is no worse than one that checks each sample within the bounding box of the triangle. </b>
 		
 		<p> My algorithm is based off of the point in triangle test from the lecture 2 slides. The boundary box is created by taking the points and finding the min and max coodinartes for the 2 for loops (x & y). This helps avoid checking every pixel on the screen, which would make it slower. Then after all of the checks are done, I call fill_pixel() if the pixel passed the test.</p>
@@ -17,7 +18,7 @@
 		<h2> Task 2 </h2>
 		
 		<b> Walk through your supersampling algorithm and data structures. Why is supersampling useful? What modifications did you make to the rasterization pipeline in the process? Explain how you used supersampling to antialias your triangles.</b>
-		
+		<p> My algorithm modifies the rasterize_triangle from task 1 by adding in extra for loops to sample more pixels based on the sample rate (for ex. 2x2 would have pixels at offsets of 1/4 and 3/4). Then, once all the subpixels are sampled, I went into resolve_to_framebuffer to average the color by adding up all of the subpixel colors and then dividing r,g,b by sample_rate. rgb_framebuffer_target is then to each color channel (current index + 0 is r, current index + 1 is g, and current index + 2 is b). Supersampling is useful for when you want to blur the edges of an image more so that it looks less jagged (i.e. helps get rid of jaggies). Through supersampling, I can average out the pixels' colors into something that looks more smooth. Instead of each pixel only being able to be one solid color, they can be a blend of multiple colors, which makes the edges stand out less.  </p>
 		
 		
 		<b> Show png screenshots of basic/test4.svg with the default viewing parameters and sample rates 1, 4, and 16 to compare them side-by-side. Position the pixel inspector over an area that showcases the effect dramatically; for example, a very skinny triangle corner. Explain why these results are observed.</b>
