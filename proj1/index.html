@@ -21,12 +21,16 @@
 		<p> My algorithm modifies the rasterize_triangle from task 1 by adding in 2 extra for loops to sample more pixels based on the sample rate (for ex. 2x2 would have pixels at offsets of 1/4 and 3/4). The offets for each sample rate are calculated based on the index and the base fraction of 0.5 / sqrt(sample_rate). The same point in triangle test occurs with each point and they are added to the sample buffer (which has been resized to be width * height * sample_rate) if they pass. Then, once all the subpixels are sampled, I went into resolve_to_framebuffer to average the color by adding up all of the subpixel colors and then dividing r,g,b by sqrt(sample_rate). rgb_framebuffer_target is then set to each color channel (current index + 0 is r, current index + 1 is g, and current index + 2 is b). Supersampling is useful for when you want to blur the edges of an image more so that it looks less jagged (i.e. helps get rid of jaggies). Through supersampling, I can average out the pixels' colors into something that looks more smooth. Instead of each pixel only being able to be one solid color, they can be a blend of multiple colors, which makes the edges stand out less.  </p>		
 		
 		<b> Show png screenshots of basic/test4.svg with the default viewing parameters and sample rates 1, 4, and 16 to compare them side-by-side. Position the pixel inspector over an area that showcases the effect dramatically; for example, a very skinny triangle corner. Explain why these results are observed.</b>
-		<p> sample rate = 1 - normal sampling, have  a lot of jaggies </p>
+		<p> sample rate = 1 - normal sampling, have  a lot of jaggies because there is no blending </p>
 		<img src="./screenshot_2-14_14-20-31.png">
-		<p> sample rate = 4 - the edges are more straight here </p>
+		<p> sample rate = 4 - the edges are more straight here because sampling the subpixels</p>
 		<img src="./screenshot_2-14_14-20-37.png">
 		<p> sample rate = 16 - the edges are blurred a little bit, you can see that the color is a mix of the magenta and white background.</p>
 		<img src="./screenshot_2-14_14-20-42.png">
+		
+		<h2> Task 3</h2>
+		
+		<b> Create an updated version of svg/transforms/robot.svg with cubeman doing something more interesting, like waving or running. Feel free to change his colors or proportions to suit your creativity. Save your svg file as my_robot.svg in your docs/ directory and show a png screenshot of your rendered drawing in your write-up. Explain what you were trying to do with cubeman in words. </b>
 		
 	</body>
 </html>
