@@ -46,6 +46,7 @@
 		<h2> Task 5 </h2>
 		<b> Explain pixel sampling in your own words and describe how you implemented it to perform texture mapping. Briefly discuss the two different pixel sampling methods, nearest and bilinear. </b>
 		<p> Pixel sampling is the process of taking a pixel and analyzing it in terms of what it will represent on the screen. Nearest sampling is very strict in that it chooses a point's "nearest neighbor" as it's output value while bilinear filtering takes into account all neighbors and averages them accordingly.</p>
+		<p> In order to do texture mapping I took the code from task 4 and updated it to use barycentric coordinates based on information from <a ref="https://alexpolt.github.io/barycentric.html"> this source (Alex Polt) to get the uv space coordinates. </a> Once the coordinates are found I set them in the variable SampleParams sp. Then I called tex.sample(sp) in order to obtain what the pixel would be mapped to.</p>
 		
 		<b> Check out the svg files in the svg/texmap/ directory. Use the pixel inspector to find a good example of where bilinear sampling clearly defeats nearest sampling. Show and compare four png screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and bilinear sampling at 16 samples per pixel. </b>
 		
