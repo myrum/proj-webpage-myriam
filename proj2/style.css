@@ -1,3 +1,11 @@
-body {font-family: 'Righteous', cursive;}
-h1   {font-family: 'Righteous', cursive;}
-p    {color: red;}
+h2   {
+        font-family: 'Righteous', cursive;
+        color: '#8f8df7';
+        text-align: left;
+        font-size: 40px;
+     }
+p    {
+        font-family: 'Dosis', sans-serif;
+        text-align: left;
+        font-size: 24px;
+     }
