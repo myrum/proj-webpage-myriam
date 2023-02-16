@@ -3,9 +3,11 @@ h2   {
         color: '#8f8df7';
         text-align: left;
         font-size: 40px;
+        margin: 10px 40px 10px;
      }
 p    {
         font-family: 'Dosis', sans-serif;
         text-align: left;
         font-size: 24px;
+        margin: 10px 40px 10px;
      }
