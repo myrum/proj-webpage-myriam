@@ -49,10 +49,30 @@
 		<p> In order to do texture mapping I took the code from task 4 and updated it to use barycentric coordinates for p_uv, p_dx, and p_dy to get the uv space coordinates. Once the coordinates are found I set them in the variable SampleParams sp. Then I called tex.sample(sp) in order to obtain what the pixel would be mapped to. Sample_nearest takes each coordinate and multiplies x by mip.width - 1 and y by mip.height - 1 and then call mip.get_texel(x, y). Sample_bilinear uses lerp to average the color from the nearest 4 points by calling get_texel on each one.</p>
 		
 		<b> Check out the svg files in the svg/texmap/ directory. Use the pixel inspector to find a good example of where bilinear sampling clearly defeats nearest sampling. Show and compare four png screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and bilinear sampling at 16 samples per pixel. </b>
+		<p> nearest sr = 1 </p> 
+		<img src="./screenshot_2-15_22-8-18.png">
 		
+		<p> bilinear sr = 1 </p> 
+		<img src="./screenshot_2-15_22-8-20.png">
+		
+		<p> nearest sr = 16 </p> 
+		<img src="./screenshot_2-15_22-8-35.png">
+		
+		<p> bilinear sr = 16 </p> 
+		<img src="./screenshot_2-15_22-8-37.png">
 		
 		<b> Comment on the relative differences. Discuss when there will be a large difference between the two methods and why. </b>
+		<p> We can see that the "E" in the logo looks more defined when using bilinear sampling and more jagged/blurry when using nearest. There will be a large difference between the two when it comes to more detailed textures are bilinear will take into account the surrounding neighbors while nearest will only choose one. This will result in details being more preserved with bilinear sampling and replaced/overwritten with nearest sampling.</p>
 		
+		<h2> Task 6</h2>
+		
+		<b> Explain level sampling in your own words and describe how you implemented it for texture mapping. </b>
+		<p> Level sampling is taking advantage of the different levels stored on mip maps and finding the optimal one to use for your image. In get_level, I used the equation in the lecture slide (lec. 5) to calculate mip map level d. From there, I clamped d to be between 0 and the largest mip map level inputted that level to nearest and bilinear. For trilinear, I used the floor and ceil of d and then calculated the percentage of how much of each to mix together.</p>
+		
+		<b> You can now adjust your sampling technique by selecting pixel sampling, level sampling, or the number of samples per pixel. Describe the tradeoffs between speed, memory usage, and antialiasing power between the three various techniques. </b>
+		<p> For pixel sampling, it's pretty fast and simple to compute point sampling but there isn't any antialiasing power while supersampling takes longer to compute and more memory to store but has antialiasing power and look smoother than point sampling. For level sampling, mip maps are useful because they are precalculated and have a lot of antialiasing power but they do take up more memory because they have to store each level. Increasing the number of samples per pixel allows for antialiasing but you must do more calculations and store each one which decreasing the number of samples leads to less antialiasing but saves on memory and computation. Overall, the more antialiasing power you want or detail in your image, the more you will have to calculate and store to make it happen.</p>
+		
+		<b> Using a png file you find yourself, show us four versions of the image, using the combinations of L_ZERO and P_NEAREST, L_ZERO and P_LINEAR, L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.</b>
 		
 		<a href="https://myrum.github.io/proj-webpage-myriam/proj1/index.html"> Website Link </a>
 	</body>
