@@ -73,6 +73,14 @@
 		<p> For pixel sampling, it's pretty fast and simple to compute point sampling but there isn't any antialiasing power while supersampling takes longer to compute and more memory to store but has antialiasing power and look smoother than point sampling. For level sampling, mip maps are useful because they are precalculated and have a lot of antialiasing power but they do take up more memory because they have to store each level. Increasing the number of samples per pixel allows for antialiasing but you must do more calculations and store each one which decreasing the number of samples leads to less antialiasing but saves on memory and computation. Overall, the more antialiasing power you want or detail in your image, the more you will have to calculate and store to make it happen.</p>
 		
 		<b> Using a png file you find yourself, show us four versions of the image, using the combinations of L_ZERO and P_NEAREST, L_ZERO and P_LINEAR, L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.</b>
+		<p> level 0, nearest </p>
+		<img src="./screenshot_2-15_23-42-6.png">
+		<p> level bilinear, nearest</p>
+		<img src="./screenshot_2-15_23-42-35.png">
+		<p> level nearest, bilinear</p>
+		<img src="./screenshot_2-15_23-42-43.png">
+		<p> level bilinear, bilinear</p>
+		<img src="./screenshot_2-15_23-42-51.png">
 		
 		<a href="https://myrum.github.io/proj-webpage-myriam/proj1/index.html"> Website Link </a>
 	</body>
