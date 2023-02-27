@@ -11,13 +11,20 @@
 		<h2> Task 1 </h2>
 		
 		<p><b> Briefly explain de Casteljau's algorithm and how you implemented it in order to evaluate Bezier curves.</b></p>
-		<p> de Casteljau's algorithm is a recursive algorithm that repeatedly takes intermediate values for each line segment to create a new line segments that will eventually lead to a nice curve. </p>
-		
-		<p><b> Take a look at the provided .bzc files and create your own Bezier curve with 6 control points of your choosing. Use this Bezier curve for your screenshots below. </b></p>
-		<p> Test Answer</p>
+		<p> de Casteljau's algorithm is a recursive algorithm that repeatedly takes intermediate values for each line segment to create a new line segments that will eventually lead to a nice curve. I implemented it by first checking if the number of points is greater than 1 (if it's 1 then return the points vector). Then I used a for loop to generate each pi' (p1' to pn-1') using the formula in the spec.</p>
 		
 		<p><b> Show screenshots of each step / level of the evaluation from the original control points down to the final evaluated point. Press E to step through. Toggle C to show the completed Bezier curve as well. </b></p>
-		<p> Test Answrr </p>
+		<p> step 1 </p>
+		
+		<p> step 2 </p>
+		
+		<p> step 3 </p>
+		
+		<p> step 4 </p>
+		
+		<p> step 5 </p>
+		
+		<p> final curve </p>
 		
 		<p><b> Show a screenshot of a slightly different Bezier curve by moving the original control points around and modifying the parameter t via mouse scrolling. </b></p>
 		
