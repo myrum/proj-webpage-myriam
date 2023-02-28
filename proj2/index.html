@@ -42,7 +42,7 @@
 		<p> We can apply de Casteljau algorithm on bezier surfaces multiple times to extend it. By applying the algorithm to each row of points, we can combine them to do the algorithm in the other direction and finally evaluate the point that we want. In terms of implementing it, evaluateStep is the same as task one but modified to have 3d vectors instead of 2d vectors. Evaluate1D recursively evaluates the next level by calling evaluateStep and then Evaluate1D on that result until the number of points is equal to 1. Evaluate takes each row in controlPoints and evaluates them using evaluate1D and u as t. Then once each row is evaluated we evaluate each result one last time with evaluate1D but with v this time.</p>
 		
 		<p><b> Show a screenshot of bez/teapot.bez (not .dae) evaluated by your implementation. </b></p>
-		<p> Test Answer </p>
+		<img src="./task 2 - teapot.png">
 		
 		<!-- ##################TASK 3##################-->
 		
@@ -53,8 +53,9 @@
 		
 		<p><b> Show screenshots of dae/teapot.dae (not .bez) comparing teapot shading with and without vertex normals. Use Q to toggle default flat shading and Phong shading. </b></p>
 		<p> teapot before </p>
-		
+		<img src="./task 3 - teapot before.png">
 		<p> teapot after </p>
+		<img src="./task 3 - teapot after.png">
 		
 		<!-- ##################TASK 4##################-->
 		
