@@ -49,10 +49,12 @@
 		<h2> Task 3 </h2>
 		
 		<p><b> Briefly explain how you implemented the area-weighted vertex normals. </b></p>
-		<p> Test Answer </p>
+		<p> Following the spec, I computed the area of the current face by getting its 3 vertices (the current vertex, vertex of h->next(), and vertex of h->next()->next()) and taking the cross product of 2 vectors created from those points (second point - first point and thrid point - first point), getting the magnitude of that product, and finally dividng by 2 (because it is a triangle). Then, I called h->face()->norm() to get the current face normal and mutliplied it by the area I calculated earlier. After each face is processed, I returned the total sum normalized.</p>
 		
 		<p><b> Show screenshots of dae/teapot.dae (not .bez) comparing teapot shading with and without vertex normals. Use Q to toggle default flat shading and Phong shading. </b></p>
-		<p> Test Answer </p>
+		<p> teapot before </p>
+		
+		<p> teapot after </p>
 		
 		<!-- ##################TASK 4##################-->
 		
