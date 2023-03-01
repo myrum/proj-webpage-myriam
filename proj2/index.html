@@ -69,9 +69,10 @@
 		<img src="./task 3 - teapot before.png">
 		
 		<p> teapot after </p>
+		<img src="./task 4 - edge flip.png">
 		
 		<p><b> Write about your eventful debugging journey, if you have experienced one. </b></p>
-		<p> I didn't have to debug a lot thankfully. The only things that I had messed up was setting the outside edges  </p>
+		<p> I didn't have to debug a lot thankfully. The only things that I had messed up was setting the outside edges' next and face after the mesh change. I had assumed that it had to be something within the picture instead of within their own triangle (where they would then become inside edges). I was also pretty worried about typos leading to having a long time debugging. There was one point where I noticed a hole would appear in the mesh if I flipped certain edges which made me double check all of my halfedges as they were the most complex to set. My strategy there was to connect all of the next() and twin() arguments to the other half edges (e.g. making sure that if I followed where h0->next() was set it would lead back to h0 after 2 iterations). Luckily it was there that I found a type in setting the twin of one of the outer edges.</p>
 		
 		<!-- ##################TASK 5##################-->
 		
