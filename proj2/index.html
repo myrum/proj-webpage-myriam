@@ -80,12 +80,20 @@
 		
 		<p><b> Briefly explain how you implemented the edge split operation and describe any interesting implementation / debugging tricks you have used. </b></p>
 		<p> I created a diagram of before and after and followed the same procedure as task 4. I copied over the initial variables of the 2 triangles, added 6 new half edges, 1 new vertex, 3 new edges, and 2 new faces. Then I reassigned everything to include the new elements and updated the position of the new vertex to be the mid point of v0 and v1.</p>
-		
+		<img src="./task 5 - diagram.png">
 		<p><b> Show screenshots of a mesh before and after some edge splits. </b></p>
-		<p> Test Answer </p>
+		<p> teapot before </p>
+		<img src="./task 3 - teapot before.png">
+		
+		<p> teapot after </p>
+		<img src="./task 5 - after split.png">
 		
 		<p><b> Show screenshots of a mesh before and after a combination of both edge splits and edge flips. </b></p>
-		<p> Test Answer </p>
+		<p> teapot before </p>
+		<img src="./task 3 - teapot before.png">
+		
+		<p> teapot after </p>
+		<img src="./task 5 - after flip split.png">
 		
 		<p><b> Write about your eventful debugging journey, if you have experienced one. </b></p>
 		<p> When I first ran the program and tried to split an edge, it immediately crashed every time. I then used the check_for() function to go through each element and check for null assignments. It was there that I realized I forgot to assign a half edge to one of the new edges, which fixed everything.</p>
