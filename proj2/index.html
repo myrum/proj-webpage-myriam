@@ -61,14 +61,17 @@
 		
 		<h2> Task 4 </h2>
 		<p><b> Briefly explain how you implemented the edge flip operation and describe any interesting implementation / debugging tricks you have used. </b></p>
-		<p> Test Answer </p>
+		<p> I followed the picture in the resources and notes section of the primer and wrote down each edge, vertex, face, and halfedge. I initiated each of them and then wrote down what they should be afterwards. I used setNeighbors() to updated all info for half edges and noted the half edge required for every vertex, edge, and face. Since there isn't any addition or deletion of elements the function is simply reassigning pointers so the main thing was being meticulous about the reference pictures.</p>
 		
 		
 		<p><b> Show screenshots of a mesh before and after some edge flips. </b></p>
-		<p> Test Answer </p>
+		<p> teapot before </p>
+		<img src="./task 3 - teapot before.png">
+		
+		<p> teapot after </p>
 		
 		<p><b> Write about your eventful debugging journey, if you have experienced one. </b></p>
-		<p> Test Answer </p>
+		<p> I didn't have to debug a lot thankfully. The only things that I had messed up was setting the outside edges  </p>
 		
 		<!-- ##################TASK 5##################-->
 		
