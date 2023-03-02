@@ -126,7 +126,7 @@
 		<p><b> Load dae/cube.dae. Perform several iterations of loop subdivision on the cube. Notice that the cube becomes slightly asymmetric after repeated subdivisions. Can you pre-process the cube with edge flips and splits so that the cube subdivides symmetrically? Document these effects and explain why they occur. Also explain how your pre-processing helps alleviate the effects. </b></p>
 		<p> As noted before, there appear to be little spikes that happen unless pre-splitting is present. When you split an edge, you are adding more edges and faces for the function to work with. Thus, in a way we can put specific corners/areas of a shape at a higher level of loop division (make specific corners look like they have already been through one round of upsampling in terms of # of faces/edges) while keeping the rest of the shape at the actual level. When we upsample, the places the tend to be spikey appear more smooth like the rest of the shape. This also requires less computation as we get a smoother shape with less rounds of upsampling (only the places that need more triangles get them).</p>
 		
-		
+		<a href="https://myrum.github.io/proj-webpage-myriam/proj2/index.html">website</a>
 		
 	</body>
 </html>
