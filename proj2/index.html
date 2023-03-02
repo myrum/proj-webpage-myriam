@@ -107,13 +107,13 @@
 		<h2> Task 6 </h2>
 		
 		<p><b> Briefly explain how you implemented the loop subdivision and describe any interesting implementation / debugging tricks you have used. </b></p>
-		<p> Test Answer </p>
+		<p> First I iterated through all of the current edges, set each one's isNew to false, and calculated the new position of the vertex that would be added during a split using the formula in the spec. Then I iterated through all of the vertices, set their isNew to false, grabbed the degree, set u based on the instructions from the spec, used code from the primer to iterate through all of the neighbors's positions, and finally calculated the new position of the old vertex using the formula from the spec.</p>
 		
 		<p><b> Take some notes, as well as some screenshots, of your observations on how meshes behave after loop subdivision. What happens to sharp corners and edges? Can you reduce this effect by pre-splitting some edges? </b></p>
-		<p> Test Answer </p>
+		<p> Sharp corners slowly become smooth as I keep pressing L. At around 3 rounds of upsampling, the shape was very smooth and round. However, there is a limit to how many times I can upsample before not being able to see any difference besides the number of triangles and my computer starts to get slow(this happens around 5 rounds). By pre-splitting the edges, I could see the shape get a lot smoother in comparison to the edges that I did not split (see last image, top right corner looks smoother in comparison to the rest of the shape which looks just a little bit spikey).</p>
 		
 		<p><b> Load dae/cube.dae. Perform several iterations of loop subdivision on the cube. Notice that the cube becomes slightly asymmetric after repeated subdivisions. Can you pre-process the cube with edge flips and splits so that the cube subdivides symmetrically? Document these effects and explain why they occur. Also explain how your pre-processing helps alleviate the effects. </b></p>
-		<p> Test Answer </p>
+		<p> As noted before, there appear to be little spikes that happen unless pre-splitting is present. When you split an edge, you are adding more edges and faces for the function to work with. Thus, in a way we can put specific corners/areas of a shape at a higher level of loop division (make specific corners look like they have already been through one round of upsampling in terms of # of faces/edges) while keeping the rest of the shape at the actual level. When we upsample, the places the tend to be spikey appear more smooth like the rest of the shape. This also requires less computation as we get a smoother shape with less rounds of upsampling (only the places that need more triangles get them).</p>
 		
 		
 		
