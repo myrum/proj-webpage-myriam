@@ -11,10 +11,10 @@
 		<!-- ##################PART 1##################-->
 		<h2> Part 1</h2>
 		<b> Walk through the ray generation and primitive intersection parts of the rendering pipeline.</b>
-		<p> test </p>
+		<p> Ray generation works by first calculating the bottom left and top right using hFov and vFov. Then, take the x, y coordinates provided and transform them into camera space via an affine transformation. The equation to transform them was found to be (2 * top_right * x) + bottom_left for both x and y (z is always -1). This was done by solving for a, b, and using the equation x = ax + bx + c. After the point in the camera space is found, it got transformed into world space by multiplying the point by the c2w matrix. This then becomes the direction vector for the ray after being normalized with the pos of the camera being the origin. For raytrace_pixel, the integral is estimated by having a for loop that runs ns_aa times. Within each iteration of the loop, a sample is taken using the grid sampler, added to the x and y inputted, normalized, sent to generate_ray, and the returned ray is sent to est_radiance_global_illumination. Each estimate is added to a sum which gets divided by ns_aa at the end and sent to update_pixel.</p>
 		
 		<b> Explain the triangle intersection algorithm you implemented in your own words.</b>
-		<p> test </p>
+		<p> Triangle intersection was done through Möller Trumbore. P0, P1, and P2 correspond to the p1, p2, p3 declared above the intersection functions. E1 was calulated as p1 - p0, e2 was p2 - p0, s was the origin of the ray - p0, s1 was the cross product between the direction of the ray and e2, and s2 was the cross product of s and e1, All the values were then plugged into the formula to get t, b1, and b2. B0 was found by doing 1 - b1 - b2. The restraints of t >= 0, mint_t > t > max_t, and 0 >= b0, b1, b2 >= 1 were all checked (if one condition was not met then the fucntion would return false. If all conditions were met then max_t would be set to t and the new surface normal would be a linear combination of all the b's and their normal counterparts (b0 * n1 + b1 * n2 + b2 * n3). </p>
 		
 		<b> Show images with normal shading for a few small .dae files.</b>
 		<p> test </p>
