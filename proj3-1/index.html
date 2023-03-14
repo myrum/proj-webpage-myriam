@@ -22,13 +22,13 @@
 		<!-- ##################PART 2##################-->
 		<h2> Part 2</h2>
 		<b> Walk through your BVH construction algorithm. Explain the heuristic you chose for picking the splitting point.</b>
-		<p> test </p>
+		<p> I stuck with the starter code that initialized the boundary box with all of the primitives. I then compared the distance between start and end to see if the number of elements was small enough to make a leaf node and return or not. If there were more than max_leaf_size elements, I used the bounding box's extent variable to find the largest axis to split. Then I used std::partition to split the iterator into [start, bound] and [bound, end] based on if the centroid along the axis chosen was smaller than the midpoint of the axis, which was the heuristic used. From there, I checked if either partition was empty and shift the bound variable up or down depending on which side was empty. After that was checked, I made a recursive call to set both the left and right children of the current node.</p>
 		
 		<b> Show images with normal shading for a few large .dae files that you can only render with BVH acceleration.</b>
 		<p> test </p>
 		
 		<b> Compare rendering times on a few scenes with moderately complex geometries with and without BVH acceleration. Present your results in a one-paragraph analysis.</b>
-		<p> test </p>
+		<p> The first complex scene I tried to render without bvh was the bench, which took well over 2 hours for my computer to finish rendering. With bvh it only took around 18 minutes. These are both with using only 1 thread so it would probably be faster if I set the parameters to use more. With the cow, bvh took 14 seconds to render with 8 threads while without bvh it took 21 seconds. Obviously, with increasing the number of threads it takes a shorter amount of time to render in general but the addition of bvh does a lot of speedup on it's own as seen when only 1 thread is used.</p>
 	
 	
 		<!-- ##################PART 3##################-->
