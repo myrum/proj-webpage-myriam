@@ -34,16 +34,18 @@
 		<!-- ##################PART 3##################-->
 		<h2> Part 3</h2>
 		<b> Walk through both implementations of the direct lighting function.</b>
-		<p> test </p>
+		<p> For uniform hemisphere sampling, I made a for loop that ran num_samples times. In each iteration, I got a sample wi, used the o2w matrix to convert it to world coordinates and cast a ray with origin hit_p and direction o2w * wi. Then I tested for intersection with the new ray and if there was a hit, I calculated each term of the reflectance equation with the pdf being 1 / 2pi. Finally, I normalized the final calculation by dividing by num_samples. For importance sampling, I iterated though all of the lights in the scene, and sampled either once if it was a point light or ns_area_light times if it wasn't. With in both cases, I took a sample with sample_L, made a ray with hit_p as the origin and wi as the direction. Then I converted wi into object coordinates to use it with the reflectance equation. I only added the reflectance to L_out if intersect returned false and normalized each individual light with ns_area_light.</p>
 		
 		<b> Show some images rendered with both implementations of the direct lighting function. </b>
-		<p> test </p>
+		<p> hemisphere uniform </p>
+		
+		<p> importance </p>
 		
 		<b> Focus on one particular scene with at least one area light and compare the noise levels in soft shadows when rendering with 1, 4, 16, and 64 light rays (the -l flag) and with 1 sample per pixel (the -s flag) using light sampling, not uniform hemisphere sampling.</b>
-		<p> test </p>
+		<p> The soft shadows become softer as you increase the number of lights. At l light, they appear very dark and jagged and at 32 they appear more smooth and like a graident as you get to the darker shadows.</p>
 		
 		<b> Compare the results between uniform hemisphere sampling and lighting sampling in a one-paragraph analysis.</b>
-		<p> test </p>
+		<p> Uniform sampling takes a lot more samples to converge to an acceptable image while importance sampling takes significantly less samples to acheive the same result. This is evident by the amount of noise present in each image. Uniform sampling will have quite a bit of noisiness with There also appears to be a minor speed difference between rendering for uniform and importance sampling as they both </p>
 		
 		
 		<!-- ##################PART 4##################-->
@@ -66,7 +68,7 @@
 		<!-- ##################PART 5##################-->
 		<h2> Part 5 </h2>
 		<b> Explain adaptive sampling. Walk through your implementation of the adaptive sampling.</b>
-		<p> test </p>
+		<p> Adaptive sampling is changing the sampling distribution based on results as they come in. You may initially start off with random sampling and then gradually shift to other sample in certain places more based on the data recieved. </p>
 		
 		<b> Pick two scenes and render them with at least 2048 samples per pixel. Show a good sampling rate image with clearly visible differences in sampling rate over various regions and pixels. Include both your sample rate image, which shows your how your adaptive sampling changes depending on which part of the image you are rendering, and your noise-free rendered result. Use 1 sample per light and at least 5 for max ray depth.</b>
 		<p> test </p>
