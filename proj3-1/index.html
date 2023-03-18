@@ -7,6 +7,7 @@
 	</head>
 	<body>
 		<h2>Overview</h2>
+		<p> Purpose of this project was to learn how to work in different coordinate systems, calculate intersections of spheres, triangles, planes, and rays. It also required an understanding of how to split objects into a bvh tree, inlcuding the pros and cons of the various splitting conditions. Finally, it required calculating both direct and indirect lighting in various ways to experiement and see how each performs in render images with different sample rates.</p>
 		
 		<!-- ##################PART 1##################-->
 		<h2> Part 1</h2>
@@ -17,15 +18,16 @@
 		<p> Triangle intersection was done through Möller Trumbore. P0, P1, and P2 correspond to the p1, p2, p3 declared above the intersection functions. E1 was calulated as p1 - p0, e2 was p2 - p0, s was the origin of the ray - p0, s1 was the cross product between the direction of the ray and e2, and s2 was the cross product of s and e1, All the values were then plugged into the formula to get t, b1, and b2. B0 was found by doing 1 - b1 - b2. The restraints of t >= 0, mint_t > t > max_t, and 0 >= b0, b1, b2 >= 1 were all checked (if one condition was not met then the fucntion would return false. If all conditions were met then max_t would be set to t and the new surface normal would be a linear combination of all the b's and their normal counterparts (b0 * n1 + b1 * n2 + b2 * n3). </p>
 		
 		<b> Show images with normal shading for a few small .dae files.</b>
-		<p> test </p>
-		
+		<img src="./CBspheres - 1.png">
+		<img src="./bench - 1.png">
+
 		<!-- ##################PART 2##################-->
 		<h2> Part 2</h2>
 		<b> Walk through your BVH construction algorithm. Explain the heuristic you chose for picking the splitting point.</b>
 		<p> I stuck with the starter code that initialized the boundary box with all of the primitives. I then compared the distance between start and end to see if the number of elements was small enough to make a leaf node and return or not. If there were more than max_leaf_size elements, I used the bounding box's extent variable to find the largest axis to split. Then I used std::partition to split the iterator into [start, bound] and [bound, end] based on if the centroid along the axis chosen was smaller than the average of all the centroids along the axis, which was the heuristic used. From there, I checked if either partition was empty and shift the bound variable up or down depending on which side was empty. After that was checked, I made a recursive call to set both the left and right children of the current node.</p>
 		
 		<b> Show images with normal shading for a few large .dae files that you can only render with BVH acceleration.</b>
-		<p> test </p>
+		<img src="./max - 2.png">
 		
 		<b> Compare rendering times on a few scenes with moderately complex geometries with and without BVH acceleration. Present your results in a one-paragraph analysis.</b>
 		<p> The first complex scene I tried to render without bvh was the bench, which took well over 2 hours for my computer to finish rendering. With bvh it only took around 18 minutes. These are both with using only 1 thread so it would probably be faster if I set the parameters to use more. With the cow, bvh took 14 seconds to render with 8 threads while without bvh it took 21 seconds. Obviously, with increasing the number of threads it takes a shorter amount of time to render in general but the addition of bvh does a lot of speedup on it's own as seen when only 1 thread is used.</p>
@@ -38,9 +40,9 @@
 		
 		<b> Show some images rendered with both implementations of the direct lighting function. </b>
 		<p> hemisphere uniform </p>
-		
+		<img src="./CBspheres - 3 uniform.png">
 		<p> importance </p>
-		
+		<img src="./CBspheres - 3 importance.png">
 		<b> Focus on one particular scene with at least one area light and compare the noise levels in soft shadows when rendering with 1, 4, 16, and 64 light rays (the -l flag) and with 1 sample per pixel (the -s flag) using light sampling, not uniform hemisphere sampling.</b>
 		<p> The soft shadows become softer as you increase the number of lights. At l light, they appear very dark and jagged and at 32 they appear more smooth and like a graident as you get to the darker shadows.</p>
 		
@@ -51,19 +53,19 @@
 		<!-- ##################PART 4##################-->
 		<h2> Part 4 </h2>
 		<b> Walk through your implementation of the indirect lighting function.</b>
-		<p> test </p>
+		<p> First call one bounce radiance to get an initial value for L. Then call sample_f using the bsdf of the intersection. Then set a probability of terminating to be 0.3. Thus, with probability 0.7 (using the function coin_flip) and with max ray depth not met, create a ray with hit_p as the origin and w_in as the direction. If the intersect on the ray returns true, recurse on the fucntion with the new ray made and new intersection. Add the L_out returned from that call to the current L by multiplying it by the bsdf and costheta and fianlly dividng by the pdf and 0.7.</p>
 		
 		<b> Show some images rendered with global (direct and indirect) illumination. Use 1024 samples per pixel.</b>
-		<p> test </p>
+		<p>  </p>
 		
 		<b> Pick one scene and compare rendered views first with only direct illumination, then only indirect illumination. Use 1024 samples per pixel. (You will have to edit PathTracer::at_least_one_bounce_radiance(...) in your code to generate these views.)</b>
-		<p> test </p>
+		<p>  </p>
 		
 		<b> For CBbunny.dae, compare rendered views with max_ray_depth set to 0, 1, 2, 3, and 100 (the -m flag). Use 1024 samples per pixel.</b>
-		<p> test </p>
+		<p>  </p>
 		
 		<b> Pick one scene and compare rendered views with various sample-per-pixel rates, including at least 1, 2, 4, 8, 16, 64, and 1024. Use 4 light rays.</b>
-		<p> test </p>
+		<p>  </p>
 		
 		<!-- ##################PART 5##################-->
 		<h2> Part 5 </h2>
@@ -71,7 +73,7 @@
 		<p> Adaptive sampling is changing the sampling distribution based on results as they come in. You may initially start off with random sampling and then gradually shift to other sample in certain places more based on the data recieved. </p>
 		
 		<b> Pick two scenes and render them with at least 2048 samples per pixel. Show a good sampling rate image with clearly visible differences in sampling rate over various regions and pixels. Include both your sample rate image, which shows your how your adaptive sampling changes depending on which part of the image you are rendering, and your noise-free rendered result. Use 1 sample per light and at least 5 for max ray depth.</b>
-		<p> test </p>
-	
+		
+		<a ref="https://myrum.github.io/proj-webpage-myriam/proj3-1/index.html> link to website </a>
 	</body>
 </html>
